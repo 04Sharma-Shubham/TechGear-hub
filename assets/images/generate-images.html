@@ -1,0 +1,375 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>画像生成ツール - TechGear Hub</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0e27 0%, #151b3d 100%);
+            color: #ffffff;
+            padding: 40px 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+        
+        h1 {
+            text-align: center;
+            color: #00d4ff;
+            margin-bottom: 40px;
+            font-size: 36px;
+        }
+        
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-bottom: 40px;
+        }
+        
+        .card {
+            background: #1a2142;
+            border: 1px solid #2a3555;
+            border-radius: 15px;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .card h3 {
+            color: #00ff88;
+            margin-bottom: 20px;
+        }
+        
+        canvas {
+            border: 2px solid #2a3555;
+            border-radius: 10px;
+            margin: 20px 0;
+            max-width: 100%;
+            height: auto;
+        }
+        
+        button {
+            background: linear-gradient(135deg, #00d4ff, #00ff88);
+            color: #0a0e27;
+            border: none;
+            padding: 12px 30px;
+            border-radius: 25px;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        
+        button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 212, 255, 0.4);
+        }
+        
+        .info {
+            background: #1a2142;
+            border: 1px solid #2a3555;
+            border-radius: 15px;
+            padding: 30px;
+            margin-top: 40px;
+        }
+        
+        .info h2 {
+            color: #00d4ff;
+            margin-bottom: 20px;
+        }
+        
+        .info p {
+            color: #b8c5d6;
+            line-height: 1.8;
+            margin-bottom: 15px;
+        }
+        
+        .success {
+            background: #00ff88;
+            color: #0a0e27;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎨 TechGear Hub 画像生成ツール</h1>
+        
+        <div class="grid">
+            <!-- ロゴ生成 -->
+            <div class="card">
+                <h3>ロゴ (200x200)</h3>
+                <canvas id="logoCanvas" width="200" height="200"></canvas>
+                <button onclick="generateLogo()">ロゴを生成</button>
+                <button onclick="downloadImage('logoCanvas', 'logo.png')">ダウンロード</button>
+                <div class="success" id="logoSuccess">✓ 生成完了</div>
+            </div>
+            
+            <!-- ファビコン生成 -->
+            <div class="card">
+                <h3>ファビコン (32x32)</h3>
+                <canvas id="faviconCanvas" width="32" height="32" style="width: 128px; height: 128px; image-rendering: pixelated;"></canvas>
+                <button onclick="generateFavicon()">ファビコンを生成</button>
+                <button onclick="downloadImage('faviconCanvas', 'favicon.png')">ダウンロード</button>
+                <div class="success" id="faviconSuccess">✓ 生成完了</div>
+            </div>
+            
+            <!-- プレースホルダー生成 -->
+            <div class="card">
+                <h3>プレースホルダー (600x600)</h3>
+                <canvas id="placeholderCanvas" width="600" height="600"></canvas>
+                <button onclick="generatePlaceholder()">プレースホルダーを生成</button>
+                <button onclick="downloadImage('placeholderCanvas', 'placeholder.jpg')">ダウンロード</button>
+                <div class="success" id="placeholderSuccess">✓ 生成完了</div>
+            </div>
+        </div>
+        
+        <div class="card" style="max-width: 100%;">
+            <h3>すべての画像を一括生成</h3>
+            <button onclick="generateAll()" style="font-size: 18px; padding: 15px 40px;">すべて生成してダウンロード</button>
+        </div>
+        
+        <div class="info">
+            <h2>📝 使用方法</h2>
+            <p>1. 各カードの「生成」ボタンをクリックして画像をプレビューします。</p>
+            <p>2. 「ダウンロード」ボタンをクリックして画像を保存します。</p>
+            <p>3. ダウンロードした画像を <code>assets/images/</code> ディレクトリに配置してください。</p>
+            <p>4. 商品画像は、無料のストックフォトサイト（Unsplash、Pexelsなど）からダウンロードして <code>assets/images/products/</code> に配置してください。</p>
+            
+            <h2 style="margin-top: 30px;">🎯 必要な商品画像</h2>
+            <p>以下の商品画像を <code>assets/images/products/</code> ディレクトリに配置してください：</p>
+            <ul style="color: #b8c5d6; line-height: 2; margin-left: 20px;">
+                <li>laptop1.jpg - MacBook Pro</li>
+                <li>laptop2.jpg - Dell XPS</li>
+                <li>phone1.jpg - iPhone</li>
+                <li>phone2.jpg - Samsung Galaxy</li>
+                <li>headphone1.jpg - Sony WH-1000XM4</li>
+                <li>tablet1.jpg - iPad Air</li>
+                <li>camera1.jpg - Canon EOS</li>
+                <li>watch1.jpg - Apple Watch</li>
+            </ul>
+        </div>
+    </div>
+
+    <script>
+        // ロゴ生成
+        function generateLogo() {
+            const canvas = document.getElementById('logoCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景円
+            ctx.fillStyle = '#0a0e27';
+            ctx.beginPath();
+            ctx.arc(100, 100, 95, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // グラデーション円の枠
+            const gradient = ctx.createLinearGradient(0, 0, 200, 200);
+            gradient.addColorStop(0, '#00d4ff');
+            gradient.addColorStop(1, '#00ff88');
+            
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 3;
+            ctx.beginPath();
+            ctx.arc(100, 100, 95, 0, Math.PI * 2);
+            ctx.stroke();
+            
+            // マイクロチップ本体
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 4;
+            ctx.beginPath();
+            ctx.roundRect(60, 60, 80, 80, 8);
+            ctx.stroke();
+            
+            // チップのピン（左）
+            ctx.lineWidth = 3;
+            for (let i = 0; i < 4; i++) {
+                const y = 75 + i * 15;
+                ctx.beginPath();
+                ctx.moveTo(50, y);
+                ctx.lineTo(60, y);
+                ctx.stroke();
+            }
+            
+            // チップのピン（右）
+            for (let i = 0; i < 4; i++) {
+                const y = 75 + i * 15;
+                ctx.beginPath();
+                ctx.moveTo(140, y);
+                ctx.lineTo(150, y);
+                ctx.stroke();
+            }
+            
+            // チップのピン（上）
+            for (let i = 0; i < 4; i++) {
+                const x = 75 + i * 15;
+                ctx.beginPath();
+                ctx.moveTo(x, 50);
+                ctx.lineTo(x, 60);
+                ctx.stroke();
+            }
+            
+            // チップのピン（下）
+            for (let i = 0; i < 4; i++) {
+                const x = 75 + i * 15;
+                ctx.beginPath();
+                ctx.moveTo(x, 140);
+                ctx.lineTo(x, 150);
+                ctx.stroke();
+            }
+            
+            // 中央の円
+            ctx.fillStyle = gradient;
+            ctx.globalAlpha = 0.3;
+            ctx.beginPath();
+            ctx.arc(100, 100, 15, 0, Math.PI * 2);
+            ctx.fill();
+            
+            ctx.globalAlpha = 1;
+            ctx.beginPath();
+            ctx.arc(100, 100, 8, 0, Math.PI * 2);
+            ctx.fill();
+            
+            document.getElementById('logoSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('logoSuccess').style.display = 'none';
+            }, 2000);
+        }
+        
+        // ファビコン生成
+        function generateFavicon() {
+            const canvas = document.getElementById('faviconCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景
+            ctx.fillStyle = '#0a0e27';
+            ctx.fillRect(0, 0, 32, 32);
+            
+            // グラデーション
+            const gradient = ctx.createLinearGradient(0, 0, 32, 32);
+            gradient.addColorStop(0, '#00d4ff');
+            gradient.addColorStop(1, '#00ff88');
+            
+            // マイクロチップ
+            ctx.strokeStyle = gradient;
+            ctx.lineWidth = 2;
+            ctx.strokeRect(8, 8, 16, 16);
+            
+            // ピン
+            ctx.lineWidth = 1;
+            // 左
+            ctx.beginPath();
+            ctx.moveTo(6, 12);
+            ctx.lineTo(8, 12);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(6, 20);
+            ctx.lineTo(8, 20);
+            ctx.stroke();
+            
+            // 右
+            ctx.beginPath();
+            ctx.moveTo(24, 12);
+            ctx.lineTo(26, 12);
+            ctx.stroke();
+            ctx.beginPath();
+            ctx.moveTo(24, 20);
+            ctx.lineTo(26, 20);
+            ctx.stroke();
+            
+            // 中央
+            ctx.fillStyle = gradient;
+            ctx.fillRect(14, 14, 4, 4);
+            
+            document.getElementById('faviconSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('faviconSuccess').style.display = 'none';
+            }, 2000);
+        }
+        
+        // プレースホルダー生成
+        function generatePlaceholder() {
+            const canvas = document.getElementById('placeholderCanvas');
+            const ctx = canvas.getContext('2d');
+            
+            // 背景
+            ctx.fillStyle = '#1a2142';
+            ctx.fillRect(0, 0, 600, 600);
+            
+            // アイコン
+            ctx.font = 'bold 120px Arial';
+            ctx.textAlign = 'center';
+            ctx.textBaseline = 'middle';
+            ctx.fillStyle = '#2a3555';
+            ctx.fillText('📷', 300, 250);
+            
+            // テキスト
+            ctx.font = 'bold 48px Arial';
+            ctx.fillStyle = '#6b7a8f';
+            ctx.fillText('No Image', 300, 380);
+            
+            ctx.font = '24px Arial';
+            ctx.fillText('画像が見つかりません', 300, 420);
+            
+            document.getElementById('placeholderSuccess').style.display = 'block';
+            setTimeout(() => {
+                document.getElementById('placeholderSuccess').style.display = 'none';
+            }, 2000);
+        }
+        
+        // 画像ダウンロード
+        function downloadImage(canvasId, filename) {
+            const canvas = document.getElementById(canvasId);
+            const link = document.createElement('a');
+            link.download = filename;
+            link.href = canvas.toDataURL('image/png');
+            link.click();
+        }
+        
+        // すべて生成
+        function generateAll() {
+            generateLogo();
+            setTimeout(() => {
+                downloadImage('logoCanvas', 'logo.png');
+            }, 100);
+            
+            setTimeout(() => {
+                generateFavicon();
+                setTimeout(() => {
+                    downloadImage('faviconCanvas', 'favicon.png');
+                }, 100);
+            }, 500);
+            
+            setTimeout(() => {
+                generatePlaceholder();
+                setTimeout(() => {
+                    downloadImage('placeholderCanvas', 'placeholder.jpg');
+                }, 100);
+            }, 1000);
+            
+            alert('すべての画像を生成しました！\nダウンロードが完了するまでお待ちください。');
+        }
+        
+        // ページ読み込み時に自動生成
+        window.onload = function() {
+            generateLogo();
+            generateFavicon();
+            generatePlaceholder();
+        };
+    </script>
+</body>
+</html>
