@@ -138,7 +138,7 @@ $products = $selected_category === 'all' ? getSampleProducts() : getProductsByCa
                     <?php foreach ($products as $product): ?>
                         <div class="product-card">
                             <div class="product-image">
-                                <img src="../<?php echo $product['image']; ?>" 
+                                <img src="<?php echo getImagePath($product['image'], true); ?>" 
                                      alt="<?php echo htmlspecialchars($product['name']); ?>"
                                      onerror="this.src='../assets/images/placeholder.jpg'">
                                 <?php if ($product['discount'] > 0): ?>
@@ -148,7 +148,7 @@ $products = $selected_category === 'all' ? getSampleProducts() : getProductsByCa
                                 <?php endif; ?>
                                 <button class="wishlist-btn" 
                                         data-product-id="<?php echo $product['id']; ?>"
-                                        onclick="toggleWishlist(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '../<?php echo $product['image']; ?>')">
+                                        onclick="toggleWishlist(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '<?php echo getImagePath($product['image'], true); ?>')">
                                     <i class="fas fa-heart"></i>
                                 </button>
                             </div>
@@ -171,7 +171,7 @@ $products = $selected_category === 'all' ? getSampleProducts() : getProductsByCa
                                         <div class="product-price"><?php echo formatPrice($product['price']); ?></div>
                                     <?php endif; ?>
                                     <button class="add-to-cart-btn" 
-                                            onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '../<?php echo $product['image']; ?>')">
+                                            onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '<?php echo getImagePath($product['image'], true); ?>')">
                                         <i class="fas fa-shopping-cart"></i> カート
                                     </button>
                                 </div>

@@ -67,19 +67,19 @@ $deal_products = getDealProducts();
     <?php if (count($deal_products) > 0): ?>
         <div class="product-grid">
             <?php foreach ($deal_products as $product): ?>
-                <div class="product-card">
-                    <div class="product-image">
-                        <img src="../<?php echo $product['image']; ?>" 
-                             alt="<?php echo htmlspecialchars($product['name']); ?>"
-                             onerror="this.src='../assets/images/placeholder.jpg'">
+                        <div class="product-card">
+                            <div class="product-image">
+                                <img src="<?php echo getImagePath($product['image'], true); ?>" 
+                                     alt="<?php echo htmlspecialchars($product['name']); ?>"
+                                     onerror="this.src='../assets/images/placeholder.jpg'">
                         <span class="product-badge discount">
                             <i class="fas fa-bolt"></i> <?php echo $product['discount']; ?>% OFF
                         </span>
-                        <button class="wishlist-btn" 
-                                data-product-id="<?php echo $product['id']; ?>"
-                                onclick="toggleWishlist(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '../<?php echo $product['image']; ?>')">
-                            <i class="fas fa-heart"></i>
-                        </button>
+                                <button class="wishlist-btn" 
+                                        data-product-id="<?php echo $product['id']; ?>"
+                                        onclick="toggleWishlist(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '<?php echo getImagePath($product['image'], true); ?>')">
+                                    <i class="fas fa-heart"></i>
+                                </button>
                     </div>
                     <div class="product-info">
                         <div class="product-category"><?php echo $product['category']; ?></div>
@@ -99,7 +99,7 @@ $deal_products = getDealProducts();
                                 <span style="color: #ff4757;"><?php echo formatPrice($product['price'] * (1 - $product['discount'] / 100)); ?></span>
                             </div>
                             <button class="add-to-cart-btn" 
-                                    onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '../<?php echo $product['image']; ?>')">
+                                    onclick="addToCart(<?php echo $product['id']; ?>, '<?php echo htmlspecialchars($product['name']); ?>', <?php echo $product['price']; ?>, '<?php echo getImagePath($product['image'], true); ?>')">
                                 <i class="fas fa-shopping-cart"></i> カート
                             </button>
                         </div>

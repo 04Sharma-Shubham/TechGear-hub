@@ -20,6 +20,16 @@ function formatPrice($price) {
     return '¥' . number_format($price);
 }
 
+// 画像パスの取得（相対パスとURLを適切に処理）
+function getImagePath($imagePath, $addPrefix = false) {
+    // URLの場合はそのまま返す
+    if (strpos($imagePath, 'http://') === 0 || strpos($imagePath, 'https://') === 0) {
+        return $imagePath;
+    }
+    // ローカルパスの場合、必要に応じてプレフィックスを追加
+    return $addPrefix ? '../' . $imagePath : $imagePath;
+}
+
 // サンプル商品データ
 function getSampleProducts() {
     return [
@@ -102,6 +112,66 @@ function getSampleProducts() {
             'image' => 'assets/images/products/phone2.jpg',
             'description' => '256GB、ファントムブラック、完全動作',
             'discount' => 12
+        ],
+        [
+            'id' => 9,
+            'name' => 'ASUS ROG Zephyrus G14',
+            'price' => 185000,
+            'condition' => '良好',
+            'category' => 'ノートパソコン',
+            'image' => 'https://images.unsplash.com/photo-1603302576837-37561b2e2302?w=800&q=80',
+            'description' => 'AMD Ryzen 9、RTX 3060、16GB RAM、1TB SSD',
+            'discount' => 8
+        ],
+        [
+            'id' => 10,
+            'name' => 'AirPods Pro 第2世代',
+            'price' => 32000,
+            'condition' => '優良',
+            'category' => 'ヘッドホン',
+            'image' => 'https://images.unsplash.com/photo-1606841837239-c5a1a4a07af7?w=800&q=80',
+            'description' => 'アクティブノイズキャンセリング、MagSafe充電ケース',
+            'discount' => 0
+        ],
+        [
+            'id' => 11,
+            'name' => 'Microsoft Surface Pro 9',
+            'price' => 125000,
+            'condition' => '良好',
+            'category' => 'タブレット',
+            'image' => 'https://images.unsplash.com/photo-1544244015-0df4b3ffc6b0?w=800&q=80',
+            'description' => 'Intel i5、8GB RAM、256GB SSD、タイプカバー付き',
+            'discount' => 10
+        ],
+        [
+            'id' => 12,
+            'name' => 'Sony Alpha A7 III',
+            'price' => 195000,
+            'condition' => '優良',
+            'category' => 'カメラ',
+            'image' => 'https://images.unsplash.com/photo-1502920917128-1aa500764cbd?w=800&q=80',
+            'description' => 'フルフレームミラーレス、24.2MP、4K動画撮影',
+            'discount' => 15
+        ],
+        [
+            'id' => 13,
+            'name' => 'Garmin Fenix 7',
+            'price' => 89000,
+            'condition' => '良好',
+            'category' => 'アクセサリー',
+            'image' => 'https://images.unsplash.com/photo-1579586337278-3befd40fd17a?w=800&q=80',
+            'description' => 'マルチスポーツGPSウォッチ、ソーラー充電対応',
+            'discount' => 0
+        ],
+        [
+            'id' => 14,
+            'name' => 'Google Pixel 7 Pro',
+            'price' => 82000,
+            'condition' => '優良',
+            'category' => 'スマートフォン',
+            'image' => 'https://images.unsplash.com/photo-1598327105666-5b89351aff97?w=800&q=80',
+            'description' => '128GB、オブシディアン、Google Tensor G2チップ',
+            'discount' => 5
         ]
     ];
 }

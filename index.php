@@ -1,7 +1,7 @@
 <?php
 $page_title = 'ホーム';
 require_once 'includes/header.php';
-$featured_products = getFeaturedProducts(6);
+$featured_products = getFeaturedProducts(12);
 ?>
 
 <!-- ヒーローセクション with Background Slider -->
