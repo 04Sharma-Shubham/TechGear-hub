@@ -42,16 +42,6 @@ require_once '../includes/header.php';
                 </div>
 
                 <div class="form-group">
-                    <label for="phone">
-                        電話番号
-                    </label>
-                    <input type="tel" 
-                           id="phone" 
-                           name="phone" 
-                           placeholder="090-1234-5678">
-                </div>
-
-                <div class="form-group">
                     <label for="subject">
                         件名 <span style="color: var(--danger);">*</span>
                     </label>
@@ -100,34 +90,6 @@ require_once '../includes/header.php';
                 </h2>
 
                 <div style="display: flex; flex-direction: column; gap: 25px;">
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--neon-blue), var(--neon-green)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-map-marker-alt" style="font-size: 20px;"></i>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--text-primary); margin-bottom: 5px;">住所</h4>
-                            <p style="color: var(--text-secondary); line-height: 1.6;">
-                                〒150-0001<br>
-                                東京都渋谷区神宮前1-2-3<br>
-                                TechGearビル 5F
-                            </p>
-                        </div>
-                    </div>
-
-                    <div style="display: flex; align-items: flex-start; gap: 15px;">
-                        <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--neon-green), var(--neon-purple)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
-                            <i class="fas fa-phone" style="font-size: 20px;"></i>
-                        </div>
-                        <div>
-                            <h4 style="color: var(--text-primary); margin-bottom: 5px;">電話番号</h4>
-                            <p style="color: var(--text-secondary); line-height: 1.6;">
-                                一般: 89-7894-2348<br>
-                                サポート: 89-7894-2348<br>
-                                (平日 9:00 - 18:00)
-                            </p>
-                        </div>
-                    </div>
-
                     <div style="display: flex; align-items: flex-start; gap: 15px;">
                         <div style="width: 50px; height: 50px; background: linear-gradient(135deg, var(--neon-purple), var(--neon-blue)); border-radius: 50%; display: flex; align-items: center; justify-content: center; flex-shrink: 0;">
                             <i class="fas fa-envelope" style="font-size: 20px;"></i>
@@ -252,24 +214,6 @@ require_once '../includes/header.php';
         </div>
     </section>
 
-    <!-- 地図セクション（オプション） -->
-    <section style="background: var(--card-bg); padding: 40px; border-radius: 20px; border: 1px solid var(--border-color);">
-        <h2 style="font-size: 32px; color: var(--neon-blue); text-align: center; margin-bottom: 30px;">
-            <i class="fas fa-map-marked-alt"></i> アクセス
-        </h2>
-        <div style="background: var(--secondary-bg); height: 400px; border-radius: 15px; display: flex; align-items: center; justify-content: center; border: 1px solid var(--border-color);">
-            <div style="text-align: center;">
-                <i class="fas fa-map-marker-alt" style="font-size: 64px; color: var(--neon-blue); margin-bottom: 20px;"></i>
-                <p style="color: var(--text-secondary); font-size: 18px;">
-                    東京都渋谷区神宮前1-2-3<br>
-                    TechGearビル 5F
-                </p>
-                <p style="color: var(--text-muted); margin-top: 15px;">
-                    最寄り駅: 原宿駅 徒歩5分
-                </p>
-            </div>
-        </div>
-    </section>
 </div>
 
 <style>

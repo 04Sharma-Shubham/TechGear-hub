@@ -55,29 +55,6 @@
                         <li><a href="#">よくある質問</a></li>
                     </ul>
                 </div>
-
-                <!-- お問い合わせ情報 -->
-                <div class="footer-section">
-                    <h4>お問い合わせ</h4>
-                    <ul class="contact-info">
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>東京都渋谷区1-2-3</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-phone"></i>
-                            <span>89-7894-2348</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <span>info@techgearhub.jp</span>
-                        </li>
-                        <li>
-                            <i class="fas fa-clock"></i>
-                            <span>月〜金: 9:00 - 18:00</span>
-                        </li>
-                    </ul>
-                </div>
             </div>
 
             <!-- フッター下部 -->

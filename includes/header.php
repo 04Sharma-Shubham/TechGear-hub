@@ -15,7 +15,20 @@ require_once __DIR__ . '/functions.php';
     <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0%25' y1='0%25' x2='100%25' y2='100%25'%3E%3Cstop offset='0%25' style='stop-color:%2300d4ff'/%3E%3Cstop offset='100%25' style='stop-color:%2300ff88'/%3E%3C/linearGradient%3E%3C/defs%3E%3Ccircle cx='50' cy='50' r='48' fill='%230a0e27' stroke='url(%23g)' stroke-width='2'/%3E%3Crect x='30' y='30' width='40' height='40' rx='4' fill='none' stroke='url(%23g)' stroke-width='3'/%3E%3Cline x1='25' y1='37' x2='30' y2='37' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='25' y1='45' x2='30' y2='45' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='25' y1='53' x2='30' y2='53' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='25' y1='61' x2='30' y2='61' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='70' y1='37' x2='75' y2='37' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='70' y1='45' x2='75' y2='45' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='70' y1='53' x2='75' y2='53' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='70' y1='61' x2='75' y2='61' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='37' y1='25' x2='37' y2='30' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='45' y1='25' x2='45' y2='30' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='53' y1='25' x2='53' y2='30' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='61' y1='25' x2='61' y2='30' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='37' y1='70' x2='37' y2='75' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='45' y1='70' x2='45' y2='75' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='53' y1='70' x2='53' y2='75' stroke='url(%23g)' stroke-width='2'/%3E%3Cline x1='61' y1='70' x2='61' y2='75' stroke='url(%23g)' stroke-width='2'/%3E%3Ccircle cx='50' cy='50' r='6' fill='url(%23g)'/%3E%3C/svg%3E">
     <!-- <link rel="icon" type="image/png" href="assets/images/favicon.png"> -->
      <link rel="stylesheet" href="<?php echo SITE_URL; ?>/assets/css/style.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+     <!--Start of Tawk.to Script-->
+<script type="text/javascript">
+var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
+(function(){
+var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
+s1.async=true;
+s1.src='https://embed.tawk.to/68df7606ac3c3519538e1921/1j6kea2p3';
+s1.charset='UTF-8';
+s1.setAttribute('crossorigin','*');
+s0.parentNode.insertBefore(s1,s0);
+})();
+</script>
+<!--End of Tawk.to Script-->
+     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 </head>
 <body>
     <!-- ナビゲーションバー -->
